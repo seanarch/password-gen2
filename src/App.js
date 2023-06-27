@@ -15,6 +15,7 @@ export default function App() {
     { title: "Include Symbols", state: false },
   ]);
   const [copied, setCopied] = useState(false);
+  const [phrase, setPhrase] = useState("");
 
   const handleCheckboxChange = (i) => {
     const updatedCheckboxData = [...checkboxData];
@@ -32,6 +33,7 @@ export default function App() {
   };
 
   const { password, errorMessage, generatePassword } = usePasswordGenerator();
+  const { converted, convertPassword } = useConvertPassword();
 
   return (
     <div className="container">
@@ -96,7 +98,18 @@ export default function App() {
         <span>
           <label>PASSWORD GENERATOR 2</label>
         </span>
-        <useConvertPassword />
+        <input
+          className="phrase"
+          type="text"
+          placeholder="Enter your phrase"
+          onChange={(e) => setPhrase(e.target.value)}
+        />
+        <div className="showphrase">{converted}</div>
+        <Button
+          text="Convert Password"
+          onClick={() => convertPassword(phrase)}
+          customClass="generateBtn"
+        />
       </div>
     </div>
   );
