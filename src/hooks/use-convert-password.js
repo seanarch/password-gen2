@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const useConvertPassword = () => {
-  const [converted, setConverted] = useState([]);
+  const [converted, setConverted] = useState("");
 
   const convertPassword = (phrase) => {
     let lowercasePhrase = phrase.toLowerCase();

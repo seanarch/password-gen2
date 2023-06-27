@@ -3,6 +3,7 @@ import { useState } from "react";
 import usePasswordGenerator from "./hooks/use-password-generator";
 import useConvertPassword from "./hooks/use-convert-password";
 import PasswordStrengthIndicator from "./components/StrengthChecker";
+import useHashing from "./hooks/use-hashing-method";
 import Button from "./components/Button";
 import Checkbox from "./components/Checkbox";
 
@@ -16,6 +17,7 @@ export default function App() {
   ]);
   const [copied, setCopied] = useState(false);
   const [phrase, setPhrase] = useState("");
+  const [phrase2, setPhrase2] = useState("");
 
   const handleCheckboxChange = (i) => {
     const updatedCheckboxData = [...checkboxData];
@@ -34,6 +36,7 @@ export default function App() {
 
   const { password, errorMessage, generatePassword } = usePasswordGenerator();
   const { converted, convertPassword } = useConvertPassword();
+  const { hashed, hashingpassword } = useHashing();
 
   return (
     <div className="container">
@@ -108,6 +111,25 @@ export default function App() {
         <Button
           text="Convert Password"
           onClick={() => convertPassword(phrase)}
+          customClass="generateBtn"
+        />
+      </div>
+      <hr></hr>
+      <br />
+      <div className="title">
+        <span>
+          <label>PASSWORD GENERATOR 3</label>
+        </span>
+        <input
+          className="phrase"
+          type="text"
+          placeholder="Enter your phrase"
+          onChange={(e) => setPhrase2(e.target.value)}
+        />
+        <div className="showphrase">{hashed}</div>
+        <Button
+          text="Convert Password"
+          onClick={() => hashingpassword(phrase2)}
           customClass="generateBtn"
         />
       </div>
