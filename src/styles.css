@@ -32,6 +32,7 @@ button {
   font-size: 10px;
 }
 
+.title,
 .charlength {
   display: flex;
   flex-direction: column;

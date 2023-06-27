@@ -1,6 +1,7 @@
 import "./styles.css";
 import { useState } from "react";
 import usePasswordGenerator from "./hooks/use-password-generator";
+import useConvertPassword from "./hooks/use-convert-password";
 import PasswordStrengthIndicator from "./components/StrengthChecker";
 import Button from "./components/Button";
 import Checkbox from "./components/Checkbox";
@@ -11,7 +12,7 @@ export default function App() {
     { title: "Include Uppercase Letters", state: false },
     { title: "Include Lowercase Letters", state: false },
     { title: "Include Numbers", state: false },
-    { title: "Include Symbols", state: false }
+    { title: "Include Symbols", state: false },
   ]);
   const [copied, setCopied] = useState(false);
 
@@ -34,6 +35,11 @@ export default function App() {
 
   return (
     <div className="container">
+      <div className="title">
+        <span>
+          <label>PASSWORD GENERATOR</label>
+        </span>
+      </div>
       {/* Password Text and Copy */}
       {password && (
         <div className="header">
@@ -84,6 +90,14 @@ export default function App() {
         onClick={() => generatePassword(checkboxData, length)}
         customClass="generateBtn"
       />
+      <hr></hr>
+      <br />
+      <div className="title">
+        <span>
+          <label>PASSWORD GENERATOR 2</label>
+        </span>
+        <useConvertPassword />
+      </div>
     </div>
   );
 }
